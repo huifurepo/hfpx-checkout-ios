@@ -1,0 +1,6 @@
+framework module HFCheckout {
+  umbrella header "HFCheckout-umbrella.h"
+
+  export *
+  module * { export * }
+}
