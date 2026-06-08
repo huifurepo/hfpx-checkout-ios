@@ -20,7 +20,7 @@ HFCheckout SDK
   s.default_subspecs = 'Core'
 
   s.subspec 'Core' do |core|
-    core.vendored_frameworks = 'HFCheckout/HFCheckout.xcframework'
+    core.vendored_frameworks = 'HFCheckout/HFCheckout.xcframework', 'HFCheckout/Frameworks/GMObjC/*.framework'
     core.resource_bundles = {
       'HFCheckout' => ['HFCheckout/Assets/**/*']
     }
