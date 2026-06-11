@@ -1,5 +1,5 @@
 framework module HFCheckout {
-  umbrella header "HFCheckout-umbrella.h"
+  umbrella header "HFCheckout.h"
 
   export *
   module * { export * }
