@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'HFCheckout'
-  s.version          = '1.0.2.4'
+  s.version          = '1.0.2.5'
   s.summary          = 'HFCheckout'
   s.description      = <<-DESC
 HFCheckout SDK
