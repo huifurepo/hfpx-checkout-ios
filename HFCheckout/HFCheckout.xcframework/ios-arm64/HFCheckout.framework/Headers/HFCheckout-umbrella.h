@@ -1,18 +1,8 @@
-/*
- * @Author: tibin.zhang tibin.zhang@huifu.com
- * @Date: 2026-05-22 15:57:12
- * @LastEditors: tibin.zhang tibin.zhang@huifu.com
- * @LastEditTime: 2026-05-22 16:22:16
- * @FilePath: /hfpx-checkout-ios/HFCheckout/HFCheckout/HFCheckout.h
- * @Description: 
- * 
- * Copyright © 2026 by PnR Data Service Co.,Ltd, All Rights Reserved. 
- */
 //
-//  HFCheckout.h
+//  HFCheckout-umbrella.h
 //  HFCheckout
 //
-//  Created by 张体宾 on 2026/2/28.
+//  Umbrella header for HFCheckout framework
 //
 
 #import <Foundation/Foundation.h>
@@ -27,18 +17,18 @@ FOUNDATION_EXPORT const unsigned char HFCheckoutVersionString[];
 #import <HFCheckout/HFCCheckout.h>
 #import <HFCheckout/HFCLogger.h>
 
-#if __has_include("HFCWeChatPaymentHandler.h")
+#if __has_include(<HFCheckout/HFCWeChatPaymentHandler.h>)
 #import <HFCheckout/HFCWeChatPaymentHandler.h>
 #endif
 
-#if __has_include("HFCAlipayPaymentHandler.h")
+#if __has_include(<HFCheckout/HFCAlipayPaymentHandler.h>)
 #import <HFCheckout/HFCAlipayPaymentHandler.h>
 #endif
 
-#if __has_include("HFCAliFenqiPaymentHandler.h")
+#if __has_include(<HFCheckout/HFCAliFenqiPaymentHandler.h>)
 #import <HFCheckout/HFCAliFenqiPaymentHandler.h>
 #endif
 
-#if __has_include("HFCUnionPayPaymentHandler.h")
+#if __has_include(<HFCheckout/HFCUnionPayPaymentHandler.h>)
 #import <HFCheckout/HFCUnionPayPaymentHandler.h>
 #endif
