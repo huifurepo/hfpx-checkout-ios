@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'HFCheckout'
-  s.version          = '1.0.2.7'
+  s.version          = '1.0.2.8'
   s.summary          = 'HFCheckout'
   s.description      = <<-DESC
 HFCheckout SDK
@@ -12,7 +12,6 @@ HFCheckout SDK
   s.source           = { :git => 'https://github.com/huifurepo/hfpx-checkout-ios.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '12.0'
-  s.static_framework = true
   s.requires_arc = true
 
   s.frameworks = 'UIKit', 'Foundation', 'SystemConfiguration', 'CoreTelephony', 'QuartzCore', 'CoreText', 'CoreGraphics', 'CoreMotion', 'Security', 'WebKit', 'Network'
@@ -22,7 +21,6 @@ HFCheckout SDK
 
   s.subspec 'Core' do |core|
     core.vendored_frameworks = 'HFCheckout/HFCheckout.xcframework'
-    core.dependency 'GMObjC'
     core.resource_bundles = {
       'HFCheckout' => ['HFCheckout/Assets/**/*']
     }
