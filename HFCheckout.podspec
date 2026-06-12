@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'HFCheckout'
-  s.version          = '1.0.2.5'
+  s.version          = '1.0.2.6'
   s.summary          = 'HFCheckout'
   s.description      = <<-DESC
 HFCheckout SDK
@@ -20,7 +20,8 @@ HFCheckout SDK
   s.default_subspecs = 'Core'
 
   s.subspec 'Core' do |core|
-    core.vendored_frameworks = 'HFCheckout/HFCheckout.xcframework', 'HFCheckout/Frameworks/GMObjC/GMObjC.framework'
+    core.vendored_frameworks = 'HFCheckout/HFCheckout.xcframework'
+    core.dependency 'GMObjC'
     core.resource_bundles = {
       'HFCheckout' => ['HFCheckout/Assets/**/*']
     }
