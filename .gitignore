@@ -36,8 +36,8 @@ HFCheckout/Frameworks/WechatOpenSDK/
 # Example project
 Example/
 
-# Build scripts
-scripts/
+# Build scripts - 临时编译产物（脚本本身需要提交，给其他维护者使用）
+scripts/_build_gmobjc/
 
 # CocoaPods generated
 _Pods.xcodeproj
@@ -47,3 +47,5 @@ _Pods.xcodeproj
 *.swo
 *~
 .idea/
+.claude/
+scripts/

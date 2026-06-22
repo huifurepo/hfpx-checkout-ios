@@ -154,7 +154,7 @@ typedef NS_ENUM(NSInteger, HFCCheckoutEnvironment) {
 /**
  * 切换SDK环境
  * @param environment 环境类型（集成环境/生产环境）
- * @discussion 切换环境后，API域名、密钥、系统ID、银联支付环境等都会自动切换
+ * @discussion 切换环境后，API域名、银联支付环境等都会自动切换
  *
  * 示例：
  * [HFCCheckout setEnvironment:HFCCheckoutEnvironmentProduction];
@@ -207,34 +207,6 @@ typedef NS_ENUM(NSInteger, HFCCheckoutEnvironment) {
  * @discussion 仅用于调试和配置查看，不建议在生产环境中使用
  */
 + (nullable NSString *)currentBaseURL;
-
-/**
- * 获取当前环境的系统ID
- * @return 当前环境的系统ID
- * @discussion 仅用于调试和配置查看，不建议在生产环境中使用
- */
-+ (nullable NSString *)currentSysId;
-
-/**
- * 获取当前环境的商户密钥预览
- * @return 商户密钥预览字符串（仅包含前12位和后12位）
- * @discussion 仅用于调试和配置查看，不会暴露完整的密钥信息
- */
-+ (nullable NSString *)currentMerchantKeyPreview;
-
-/**
- * 设置集成环境的系统ID
- * @param sysId 系统ID
- * @discussion 仅在需要使用自定义系统ID时调用，大多数情况下不需要调用此方法
- */
-+ (void)setIntegrationSysId:(NSString *)sysId;
-
-/**
- * 设置生产环境的系统ID
- * @param sysId 系统ID
- * @discussion 仅在需要使用自定义系统ID时调用，大多数情况下不需要调用此方法
- */
-+ (void)setProductionSysId:(NSString *)sysId;
 
 @end
 

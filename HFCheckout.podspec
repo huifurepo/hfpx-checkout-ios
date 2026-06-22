@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'HFCheckout'
-  s.version          = '1.0.2.9'
+  s.version          = '1.0.3'
   s.summary          = 'HFCheckout'
   s.description      = <<-DESC
 HFCheckout SDK
@@ -15,6 +15,9 @@ HFCheckout SDK
   s.static_framework = true
   s.requires_arc = true
 
+  s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-ObjC' }
+  s.user_target_xcconfig = { 'OTHER_LDFLAGS' => '-ObjC' }
+
   s.frameworks = 'UIKit', 'Foundation', 'SystemConfiguration', 'CoreTelephony', 'QuartzCore', 'CoreText', 'CoreGraphics', 'CoreMotion', 'Security', 'WebKit', 'Network'
   s.libraries = 'c++', 'z', 'sqlite3'
 
@@ -22,7 +25,6 @@ HFCheckout SDK
 
   s.subspec 'Core' do |core|
     core.vendored_frameworks = 'HFCheckout/HFCheckout.xcframework'
-    core.dependency 'GMDynamic'
     core.resource_bundles = {
       'HFCheckout' => ['HFCheckout/Assets/**/*']
     }
@@ -31,20 +33,15 @@ HFCheckout SDK
   s.subspec 'WechatPaySDK' do |wechat|
     wechat.dependency 'HFCheckout/Core'
     wechat.dependency 'WechatOpenSDK-XCFramework'
-    wechat.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-ObjC' }
   end
 
   s.subspec 'AlipaySDK' do |alipay|
     alipay.dependency 'HFCheckout/Core'
     alipay.dependency 'AlipaySDK-iOS'
-    alipay.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-ObjC' }
   end
 
   s.subspec 'UnionPaySDK' do |unionpay|
     unionpay.dependency 'HFCheckout/Core'
-    unionpay.vendored_frameworks = 'HFCheckout/Frameworks/UPPaymentControl/UPPaymentControlMini.framework'
-    unionpay.vendored_libraries = 'HFCheckout/Frameworks/UMSPosPayOnly/libUMSPosPayOnly.a'
-    unionpay.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-ObjC' }
   end
 
   s.subspec 'All' do |all|

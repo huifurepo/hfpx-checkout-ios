@@ -18,7 +18,12 @@ HFCheckout 是汇付天下收银台 iOS SDK，提供简洁的收银台 UI，支�
 
 在 `Podfile` 中根据需要选择对应的 subspec：
 
+> **重要**：必须使用 `use_frameworks! :linkage => :static`。HFCheckout 是静态库，不写该行会因链接方式不匹配导致使用方一启动就崩溃。
+
 ```ruby
+# 必须放在 target 之前
+use_frameworks! :linkage => :static
+
 # 仅引入核心收银台（不含任何第三方支付 SDK）
 pod 'HFCheckout'
 
@@ -447,7 +452,7 @@ MyCustomPaymentHandler *handler = [[MyCustomPaymentHandler alloc] init];
 
 | Subspec | 包含的支付方式 | 额外依赖 |
 |---------|---------------|---------|
-| `HFCheckout` (Core) | 无（仅核心收银台） | GMObjC, OpenSSL |
+| `HFCheckout` (Core) | 无（仅核心收银台） | 无 |
 | `HFCheckout/WechatPaySDK` | 微信支付 | WechatOpenSDK-XCFramework |
 | `HFCheckout/AlipaySDK` | 支付宝、花呗分期 | AlipaySDK-iOS |
 | `HFCheckout/All` | 微信支付、支付宝、花呗分期、云闪付 | 以上全部 |
@@ -461,7 +466,7 @@ MyCustomPaymentHandler *handler = [[MyCustomPaymentHandler alloc] init];
 ### Podfile
 
 ```ruby
-use_frameworks!
+use_frameworks! :linkage => :static
 
 platform :ios, '12.0'
 
@@ -537,6 +542,22 @@ end
 ### Q: 运行报错 `Sandbox: rsync deny`
 
 Xcode 15+ 默认开启了 User Script Sandboxing，在 Podfile 的 `post_install` 中关闭即可，详见 [2.3 安装](#23-安装)。
+
+### Q: 导入 SDK 后一启动就 Crash（最常见）
+
+按以下顺序排查：
+
+1. **确认 Podfile 加了 `use_frameworks! :linkage => :static`**：HFCheckout 是静态库，缺这行会因链接方式不匹配导致启动崩溃。
+2. **确认 Podfile 没有 `EXCLUDED_ARCHS[sdk=iphonesimulator*] = 'arm64'`**：在 Apple Silicon Mac 上模拟器需要 arm64，旧的排除配置会让 xcframework 找不到对应 slice，启动即 Crash。当前版本的 xcframework 已包含模拟器 arm64/x86_64 slice。
+3. **执行 `pod deintegrate && pod install`**：升级到新版 SDK 后旧缓存可能没清干净，必须先 deintegrate。
+4. **拿到崩溃堆栈**：如果是 `unrecognized selector` / `class not loaded`，是 `-ObjC` 链接标志没生效；如果是 `image not found`，是动态库未 embed。
+
+### Q: 链接报错 `duplicate symbol`
+
+宿主 App 内其他 SDK 自带了与 HFCheckout 相同的符号。排查方法：
+
+1. 运行 `pod deintegrate && pod install` 清除旧缓存
+2. 检查是否有其他 Pod 引入了重复的库
 
 ### Q: 启动应用黑屏/启动极慢
 
