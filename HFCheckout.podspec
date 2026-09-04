@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
   s.name             = 'HFCheckout'
-  s.version          = '1.0.3'
-  s.summary          = 'HFCheckout'
+  s.version          = '1.0.4'
+  s.summary          = 'HFCheckout payment checkout SDK'
   s.description      = <<-DESC
-HFCheckout SDK
+HFCheckout payment checkout SDK.
                        DESC
 
   s.homepage         = 'https://github.com/huifurepo/hfpx-checkout-ios'
@@ -14,7 +14,6 @@ HFCheckout SDK
   s.ios.deployment_target = '12.0'
   s.static_framework = true
   s.requires_arc = true
-
   s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-ObjC' }
   s.user_target_xcconfig = { 'OTHER_LDFLAGS' => '-ObjC' }
 
@@ -42,6 +41,8 @@ HFCheckout SDK
 
   s.subspec 'UnionPaySDK' do |unionpay|
     unionpay.dependency 'HFCheckout/Core'
+    unionpay.vendored_libraries = 'HFCheckout/Frameworks/UMSPosPayOnly/libUMSPosPayOnly.a'
+    unionpay.vendored_frameworks = 'HFCheckout/Frameworks/UPPaymentControl/UPPaymentControlMini.framework'
   end
 
   s.subspec 'All' do |all|

@@ -154,7 +154,7 @@ typedef NS_ENUM(NSInteger, HFCCheckoutEnvironment) {
 /**
  * 切换SDK环境
  * @param environment 环境类型（集成环境/生产环境）
- * @discussion 切换环境后，API域名、银联支付环境等都会自动切换
+ * @discussion 切换环境后，API域名、密钥、系统ID、银联支付环境等都会自动切换
  *
  * 示例：
  * [HFCCheckout setEnvironment:HFCCheckoutEnvironmentProduction];

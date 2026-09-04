@@ -73,6 +73,12 @@ typedef NS_ERROR_ENUM(HFCPaymentErrorDomain, HFCPaymentErrorCode) {
     /** 支付宝支付异常 */
     HFCPaymentErrorCodeProviderAlipayError = -31,
 
+    /** 银行卡组件不可用 */
+    HFCPaymentErrorCodeProviderBankCardNotAvailable = -40,
+
+    /** 银行卡支付异常 */
+    HFCPaymentErrorCodeProviderBankCardError = -41,
+
     /** 支付组件不可用 */
     HFCPaymentErrorCodeProviderIndirectNotAvailable = -50,
 
@@ -98,6 +104,8 @@ FOUNDATION_EXPORT NSString * const kHFCPaymentErrorCodeDirectNetworkError;   // 
 FOUNDATION_EXPORT NSString * const kHFCPaymentErrorCodeDirectPaymentError;   // "-20" - ERR_DIRECT_PAYMENT_ERROR
 FOUNDATION_EXPORT NSString * const kHFCPaymentErrorCodeProviderAlipayNotAvailable; // "-30" - ERR_PROVIDER_ALIPAY_NOT_AVAILABLE
 FOUNDATION_EXPORT NSString * const kHFCPaymentErrorCodeProviderAlipayError;  // "-31" - ERR_PROVIDER_ALIPAY_ERROR
+FOUNDATION_EXPORT NSString * const kHFCPaymentErrorCodeProviderBankCardNotAvailable; // "-40" - ERR_PROVIDER_BANKCARD_NOT_AVAILABLE
+FOUNDATION_EXPORT NSString * const kHFCPaymentErrorCodeProviderBankCardError;  // "-41" - ERR_PROVIDER_BANKCARD_ERROR
 FOUNDATION_EXPORT NSString * const kHFCPaymentErrorCodeProviderIndirectNotAvailable; // "-50" - ERR_PROVIDER_INDIRECT_NOT_AVAILABLE
 FOUNDATION_EXPORT NSString * const kHFCPaymentErrorCodeProviderIndirectError; // "-51" - ERR_PROVIDER_INDIRECT_ERROR
 
@@ -167,6 +175,7 @@ typedef NS_ENUM(NSInteger, HFCPaymentType) {
     HFCPaymentTypeAlipay = 2,    // 支付宝
     HFCPaymentTypeUnionPay = 3,  // 银联支付
     HFCPaymentTypeAliFenqi = 4,  // 花呗分期
+    HFCPaymentTypeBankCard = 5,  // 银行卡
 };
 
 /**
@@ -242,6 +251,15 @@ typedef NS_ENUM(NSInteger, HFCPaymentType) {
  * 调用方实现此协议来处理花呗分期支付。
  */
 @protocol HFCAliFenqiHandler <HFCPaymentHandler>
+
+@end
+
+/**
+ * 银行卡支付Handler协议
+ *
+ * 调用方实现此协议来处理银行卡支付。
+ */
+@protocol HFCBankCardHandler <HFCPaymentHandler>
 
 @end
 
