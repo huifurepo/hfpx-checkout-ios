@@ -1,9 +1,7 @@
 {
-  "version": "1.0.4",
-  "sourceCommit": "738cfac57add0858a1454a5af7768342425015b4",
-  "artifactSHA256": "df88b8800247d3d8aeda8398bcb467919b9b13c0e93cf71ff8fd35f359f8eaaa",
-  "xcodeVersion": "Xcode 26.3\nBuild version 17C529",
-  "cocoaPodsVersion": "1.16.2",
+  "version": "1.0.5",
+  "sourceCommit": "4d1cfc78bd47505ff3501f2790ee3b91b1bbb396",
+  "artifactSHA256": "57ae62adbb1577a78566729e0ad1dca541622e9ce9ad636c4aa4e6df54f5b860",
   "architectures": [
     "arm64"
   ],
