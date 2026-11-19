@@ -1,7 +1,7 @@
 {
   "version": "1.0.5",
-  "sourceCommit": "4d1cfc78bd47505ff3501f2790ee3b91b1bbb396",
-  "artifactSHA256": "57ae62adbb1577a78566729e0ad1dca541622e9ce9ad636c4aa4e6df54f5b860",
+  "sourceCommit": "c349658b54a0a5bb8e7dee6127de1c7ce37dcff3",
+  "artifactSHA256": "cdcb2018b0d744f32a9698496e877bb727673e1eb4df9b684da2a32c3686bf50",
   "architectures": [
     "arm64"
   ],
